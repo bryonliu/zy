@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="userCategory">
+        <item>求援者-寻求他人帮助</item>
+        <item>支援者-有能力救助他人</item>
+    </string-array>
+
+</resources>

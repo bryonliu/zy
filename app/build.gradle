@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "23.0.2"
+
+    repositories {
+        flatDir {
+            dirs "libs"
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.tencent.zy"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // signingConfig signingConfigs.debug
+        }
+        /*   debug{
+               minifyEnabled false
+               signingConfig signingConfigs.debug
+           }*/
+    }
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('debug.jks')
+            storePassword "com.tencent.zy"
+            keyAlias "zy"
+            keyPassword "com.tencent.zy"
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    android {
+        packagingOptions {
+            exclude 'META-INF/LICENSE.txt'
+            exclude 'META-INF/NOTICE.txt'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.1.0'
+    compile 'com.android.support:support-v4:23.1.0'
+    /*  compile 'com.android.support:palette-v7:23.1.0'*/
+    //compile 'com.android.support:design:23.1.0'
+    compile(name: 'rxandroid-1.1.0', ext: 'aar')
+    compile files('libs/butterknife-7.0.1.jar')
+    compile files('libs/okhttp-3.0.1.jar')
+    compile files('libs/okio-1.6.0.jar')
+    compile files('libs/mta-android-stat-sdk-2.1.0_20160111.jar')
+    compile files('libs/mta-mid-sdk-2.20.jar')
+    compile files('libs/mta-sociallbs-sdk-2.2.3_20160108.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/fastjson-1.1.34.android.jar')
+    compile files('libs/AndroidUtil_inject.jar')
+    compile files('libs/httpmime-4.1.1.jar')
+    compile files('libs/mta-android-talk-sdk_v10.02.jar')
+    compile files('libs/wup_talk_v10.02.jar')
+    compile files('libs/glide-3.7.0.jar')
+}
